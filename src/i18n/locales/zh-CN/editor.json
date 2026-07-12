@@ -1,0 +1,569 @@
+{
+	"workspace": {
+		"tabs": {
+			"cockpit": "驾驶舱",
+			"analyze": "分析",
+			"record": "录制",
+			"produce": "成片",
+			"library": "资料库",
+			"publish": "发布"
+		},
+		"badge": {
+			"running": "{{n}} 个任务在跑",
+			"awaiting": "{{n}} 个待你确认"
+		},
+		"comingSoon": "即将接入",
+		"cockpit": {
+			"title": "内容驾驶舱",
+			"desc": "从每日信源看板选题、定文案,然后一键去录屏。"
+		},
+		"analyze": {
+			"title": "拉片分析",
+			"desc": "拖入视频或链接,产出拆解报告 + 复现 SOP。"
+		},
+		"produce": {
+			"title": "成片",
+			"desc": "把录屏或文案投给视频引擎,看真实进度直到出成片。"
+		},
+		"library": {
+			"title": "资料库",
+			"desc": "录屏原档、成片、拉片报告、发布包,统一在这里。"
+		}
+	},
+	"produce": {
+		"engine": {
+			"ready": "引擎就绪",
+			"notReady": "未找到引擎",
+			"notReadyHint": "设置 INKAST_PIPELINE_ROOT 或修正 video-pipeline 路径后,点自检。",
+			"smoke": "自检",
+			"smokeOk": "依赖齐全"
+		},
+		"noKey": "成片拆页需要 Claude 或 DeepSeek 密钥。配置后即可真出片。",
+		"configKey": "配置密钥",
+		"smokeBlocked": "引擎依赖自检未通过,先按上方自检结果补齐(.venv/依赖/ffmpeg)再投料。",
+		"submit": {
+			"title": "文案 → 视频",
+			"hint": "粘贴文案/想法,AI 拆成多页分镜(你可在确认点检查/改稿)再渲染成片。录屏请在「录制」Tab 编辑。",
+			"type_idea": "想法",
+			"type_recording": "录屏",
+			"type_slides": "翻页",
+			"placeholder_idea": "粘贴一个想法或文案……",
+			"placeholder_recording": "录屏文件绝对路径(.mov/.mp4/.m4v)",
+			"placeholder_slides": "粘贴文案/想法/要做成讲解的原始材料……",
+			"titleField": "标题(可选)",
+			"mode_simple": "极简",
+			"mode_publish": "发布就绪",
+			"provider": "成片供应商",
+			"providerAuto": "自动(按已填的密钥选)",
+			"button": "开始成片",
+			"errorEmpty": "请输入要成片的内容。",
+			"errorNoKey": "成片拆页需要 LLM 密钥(Claude/Kimi/DeepSeek 等任一)。请先配置密钥再投料。"
+		},
+		"jobs": {
+			"title": "任务",
+			"refresh": "刷新",
+			"empty": "还没有任务。在左侧投料试试。",
+			"artifacts": "产物",
+			"rerun": "重跑",
+			"cancel": "取消/停止",
+			"delete": "删除",
+			"elapsed": "已用 {{d}}",
+			"duration": "耗时 {{d}}",
+			"finishedAt": "{{t}} 完成",
+			"estimate": "预计约 {{d}}(历史 {{n}} 次均时)",
+			"removed": "已删除「{{title}}」",
+			"undoRemove": "撤销"
+		},
+		"status": {
+			"queued": "排队中",
+			"running": "运行中",
+			"awaiting": "待确认",
+			"awaitingPreview": "待预览确认",
+			"done": "完成",
+			"failed": "失败",
+			"interrupted": "已中断"
+		},
+		"confirm": {
+			"title": "合成前检查文案",
+			"heading": "标题",
+			"narration": "口播词",
+			"confirm": "确认并合成",
+			"save": "保存修改",
+			"replan": "重新拆页"
+		},
+		"errors": {
+			"submitFailed": "投料失败",
+			"actionFailed": "操作失败"
+		},
+		"mode": {
+			"slides": "文案→翻页视频",
+			"avatar": "数字人口播"
+		},
+		"preview": {
+			"option": "渲染前先出预览(Gate B)",
+			"optionHint": "确认文案后先渲一张封面 + 3 秒动态预览,看过满意再正式渲染,避免直接出整片才发现不对。",
+			"title": "渲染前预览",
+			"hint": "预览已生成(轻量,不是正式成片)。看过满意点「确认并渲染」;要改内容点「返回改稿」。",
+			"none": "没找到预览产物(可重跑或返回改稿)。",
+			"confirm": "确认并渲染",
+			"replan": "返回改稿"
+		}
+	},
+	"search": {
+		"title": "全局检索",
+		"placeholder": "搜选题 / 观点 / 拉片报告 / 录屏 / 成片 / 发布稿…(⌘K)",
+		"hint": "输入关键词,跨所有内容检索。选题/观点点选跳到驾驶舱,文件在访达打开。",
+		"noResults": "没有匹配结果",
+		"close": "关闭",
+		"foot": "已索引 {{n}} 条",
+		"kind": {
+			"topic": "选题",
+			"opinion": "观点",
+			"analysis": "拉片报告",
+			"recording": "录屏",
+			"film": "成片",
+			"publish": "发布稿"
+		}
+	},
+	"cockpit": {
+		"tabs": {
+			"topics": "今日选题",
+			"projects": "项目",
+			"opinions": "观点库",
+			"sources": "信源雷达",
+			"hot": "热点",
+			"peers": "同行热文",
+			"follow": "关注"
+		},
+		"refresh": "刷新",
+		"errorTitle": "读不到驾驶舱数据",
+		"dir": "数据目录",
+		"dirHint": "点下方「选择目录」指向你的 KnowledgePlanet 每日驾驶舱 目录(也可用环境变量 INKAST_COCKPIT_DIR)。",
+		"goRecord": "去录屏",
+		"open": "打开",
+		"why": "为什么",
+		"fit": "适配",
+		"opinion": "观点",
+		"myOpinion": "我的观点(灌观点)",
+		"myOpinionPlaceholder": "写下你对这条选题的看法/角度/态度——去录屏或去成片时会灌进口播稿。",
+		"resizeDetail": "拖动调节详情区宽度",
+		"genArticle": "生成图文",
+		"editArticle": "编辑图文",
+		"genArticleHint": "用选题 + 你的观点生成公众号图文初稿,可一键送发布看板",
+		"article": {
+			"title": "图文初稿",
+			"generate": "生成图文",
+			"regenerate": "重新生成",
+			"hint": "用选题 + 你的观点改写;生成后可编辑,再保存或送发布看板",
+			"placeholder": "点「生成图文」用 AI 起草,或直接在这里写。",
+			"generated": "已用 {{provider}} 生成,可继续编辑",
+			"genFailed": "生成失败(检查 LLM 密钥/网络)",
+			"saved": "草稿已保存到选题",
+			"saving": "保存中…",
+			"save": "保存草稿",
+			"sent": "已送发布看板(Drafts),选题置「已推草稿」",
+			"sendFailed": "送发布看板失败",
+			"send": "送发布看板"
+		},
+		"bear": "看空/风险",
+		"concept": "概念",
+		"hooks": "自问",
+		"prefs": "偏好",
+		"resetPrefs": "恢复默认",
+		"seed": "种子",
+		"cycleStatus": "点击切换状态",
+		"title": "内容驾驶舱",
+		"detailEmpty": "选择一条查看详情",
+		"close": "关闭",
+		"artifactFilm": "成片",
+		"goRecordHint": "把这条选题的口播稿塞进提词器,切到录制",
+		"goProduce": "去成片",
+		"goProduceHint": "把这条选题当想法投料到成片(审后再提交,完成自动回写已成稿)",
+		"todo": {
+			"title": "项目待办",
+			"placeholder": "加一条下一步(回车添加)",
+			"add": "添加",
+			"toggle": "标记完成/未完成",
+			"remove": "删除"
+		},
+		"project": {
+			"empty": "还没有进行中的项目。在「今日选题」里改状态、写观点或加待办,选题就会出现在这里跟踪。",
+			"hasOpinion": "有观点",
+			"hasDraft": "有图文",
+			"artifactN": "{{n}} 个产物"
+		},
+		"opinions": {
+			"title": "我的观点库",
+			"search": "搜索观点…",
+			"empty": "还没有观点。在选题详情的「我的观点」里写下看法,这里会聚合起来便于检索复用。",
+			"noMatch": "没有匹配的观点",
+			"untitled": "(选题已不在当日看板)",
+			"copy": "复制观点",
+			"copied": "已复制",
+			"jump": "去选题"
+		},
+		"follow": {
+			"placeholder": "粘贴视频链接,或 YouTube/抖音博主主页",
+			"add": "添加",
+			"hint": "YouTube 频道会自动列最近作品;抖音主页会追踪作品数变化,能拿到公开视频时自动补入视频卡。单条视频可直接复制链接或去拉片。",
+			"empty": "还没有收藏。粘贴一个视频链接或博主主页试试。",
+			"added": "新增 {{n}} 条",
+			"addFailed": "添加失败",
+			"refresh": "检查更新",
+			"refreshing": "检查中",
+			"refreshDone": "检查完成,新增 {{n}} 条",
+			"refreshFailed": "检查失败",
+			"awemeCount": "作品 {{n}}",
+			"newAwemeCount": "新增 +{{n}}",
+			"checkedAt": "检查 {{time}}",
+			"channelBadge": "{{platform}}博主",
+			"copy": "复制链接",
+			"openProfile": "打开主页",
+			"goAnalyze": "去拉片",
+			"remove": "删除"
+		},
+		"creatorPool": {
+			"title": "AI 博主种子池",
+			"subtitle": "内置推荐跟踪池 · 只收 AI 工具/教程/产品/工作流,自动隐藏短剧·情感·游戏",
+			"count": "{{n}} 位博主",
+			"search": "搜名称 / 抖音号 / 标签",
+			"hideExcluded": "隐藏短剧·情感·游戏",
+			"filterAll": "全部",
+			"tierCore": "主追",
+			"tierSecondary": "次级",
+			"tierReference": "参考",
+			"tierCandidate": "待复核",
+			"copyId": "复制抖音号",
+			"copied": "已复制",
+			"openSearch": "打开搜索",
+			"track": "添加跟踪",
+			"tracked": "已跟踪",
+			"noId": "无稳定抖音号",
+			"manualReview": "需人工复核最近内容",
+			"empty": "没有符合条件的博主。",
+			"candidateHint": "以下候选未拿到稳定公开抖音号,不自动导入;点开搜索人工确认后再决定是否跟踪。",
+			"verify_confirmed_public": "已确认",
+			"verify_third_party_public": "第三方确认",
+			"verify_suspected": "疑似",
+			"verify_needs_manual_verify": "待人工核验",
+			"trackFailed": "添加跟踪失败"
+		},
+		"comments": {
+			"fetch": "抓取评论",
+			"refetch": "重新抓取",
+			"fetching": "抓取中…",
+			"count": "评论 {{n}}",
+			"added": "新增 {{n}}",
+			"openPage": "打开视频页面",
+			"viewTop": "查看高赞",
+			"hide": "收起",
+			"topTitle": "高赞评论",
+			"like": "赞 {{n}}",
+			"reply": "回复 {{n}}",
+			"lastFetched": "抓取于 {{time}}",
+			"onlyDouyin": "评论抓取目前仅支持抖音单条视频。",
+			"status_ok": "已抓取公开评论",
+			"status_no_public_data": "无可解析公开评论",
+			"status_needs_login": "需登录态(不保存凭据)",
+			"status_blocked": "被风控拦截",
+			"status_needs_manual_refresh": "需人工刷新",
+			"status_error": "抓取出错",
+			"manualHint": "Inkast 不假装后台已抓成功;可打开视频页面人工查看,或由 Computer Use 辅助滚动确认。"
+		}
+	},
+	"keys": {
+		"title": "LLM 密钥",
+		"desc": "Claude / Kimi 用于拉片视觉(没 Claude 就用 Kimi);DeepSeek 用于成片文案。本地加密存储,不落明文、不进 git,重启仍在。",
+		"configured": "已配置",
+		"replacePlaceholder": "已配置 · 填新值可替换",
+		"save": "保存",
+		"saveFailed": "保存失败",
+		"use": {
+			"anthropic": "拉片 + 成片",
+			"moonshot": "拉片 + 成片(没 Claude 用它)",
+			"deepseek": "成片(纯文本,不能拉片)",
+			"qwen": "成片(纯文本)",
+			"glm": "成片(纯文本)",
+			"openai": "成片(纯文本)"
+		},
+		"noEncryption": "系统密钥库不可用,暂无法安全存储(macOS 需 Keychain 就绪)。",
+		"note": "密钥经 Electron safeStorage 加密落 userData/keys.json,仅本机可解;保存即注入,成片/分析立即可用。"
+	},
+	"settings": {
+		"title": "外部路径设置",
+		"desc": "成片引擎 / 发布目录 / 驾驶舱目录在这里改,不必手改配置文件。换机或挪了目录后在这里重选即可。",
+		"engine": "成片引擎 (video-pipeline)",
+		"publishing": "发布目录 (Publishing)",
+		"cockpit": "驾驶舱选题目录",
+		"choose": "选择目录…",
+		"ok": "有效",
+		"missing": "路径无效/不存在",
+		"envOverride": "由环境变量覆盖,改这里不生效",
+		"pickFailed": "设置失败",
+		"managed": "App 专属副本",
+		"adopt": "采用为 App 专属副本",
+		"adopting": "采用中…(复制约 2.4GB)",
+		"adoptFailed": "采用失败",
+		"adoptHint": "采用 = 把当前引擎冻结复制到 App 专属位置;之后你改/移/删开发目录都不影响成片。要更新引擎,先「选择目录」指向新引擎再采用。",
+		"note": "三条路径默认指向本机知识库;选目录后写入 userData 配置并即时生效(引擎无需重启)。",
+		"backup": {
+			"title": "导出备份",
+			"desc": "把 App 的选题状态/项目待办/我的观点/图文草稿/成片任务历史/关注/配置导出到你选的目录。不含媒体文件(录屏·成片·拉片报告),也不含密钥。",
+			"export": "导出备份…",
+			"done": "已导出 {{n}} 个文件,已在访达打开",
+			"failed": "导出失败"
+		}
+	},
+	"publish": {
+		"title": "发布看板",
+		"total": "共 {{n}} 篇",
+		"uncategorizedWarn": "{{n}} 篇未分类(该更新映射表)",
+		"refresh": "刷新",
+		"errorTitle": "读不到发布目录",
+		"dirHint": "点下方「选择目录」指向你的 Operations/Publishing 目录(也可用环境变量 INKAST_PUBLISHING_DIR)。",
+		"stageEmpty": "此阶段暂无稿件",
+		"stale": "停太久",
+		"staleDays": "停留 {{n}} 天",
+		"staleTotal": "{{n}} 篇停太久",
+		"open": "在访达打开",
+		"previewTip": "点开预览正文",
+		"previewBinary": "该文件不是文本稿件,无法预览;点右上角在访达打开。",
+		"previewFailed": "读不到正文(可能已删/移动)。",
+		"batch": {
+			"selected": "已选 {{n}} 项",
+			"moveTo": "移动到:",
+			"delete": "删除→废纸篓",
+			"clear": "取消选择"
+		},
+		"overview": {
+			"weekPublished": "本周发布 {{n}}",
+			"oldest": "最久停留 {{n}} 天"
+		},
+		"undo": {
+			"moved": "已移动 {{n}} 个文件",
+			"undo": "撤销",
+			"trashed": "已移入废纸篓",
+			"openTrash": "打开废纸篓"
+		},
+		"actions": {
+			"edit": "编辑",
+			"rename": "重命名",
+			"move": "移动",
+			"delete": "删除",
+			"notEditable": "非文本文件,不可编辑",
+			"editTitle": "编辑内容",
+			"renameTitle": "重命名文件",
+			"moveTitle": "移动到阶段",
+			"deleteTitle": "删除稿件",
+			"loading": "读取中…",
+			"failed": "操作失败",
+			"renameHint": "新文件名(保留扩展名):",
+			"moveHint": "把这篇稿的全部文件移到:",
+			"deleteConfirm": "删除这篇稿及其 {{n}} 个文件?",
+			"deleteToTrash": "移到废纸篓 —— 可从访达恢复。",
+			"cancel": "取消",
+			"save": "保存",
+			"confirm": "确认"
+		},
+		"stages": {
+			"candidate": "选题候选",
+			"draft": "草稿",
+			"ready": "发布准备",
+			"published": "已发布",
+			"uncategorized": "未分类"
+		}
+	},
+	"library": {
+		"title": "资料库",
+		"refresh": "刷新",
+		"empty": "这里还没有内容",
+		"errorTitle": "资料库读取失败",
+		"toProduce": "去成片",
+		"previewTip": "点开预览",
+		"openInFinder": "在访达打开",
+		"previewLoading": "加载预览…",
+		"previewFailed": "读不到内容(可能已删/移动)。",
+		"sections": {
+			"recordings": "录屏原档",
+			"films": "成片",
+			"analyses": "拉片报告"
+		},
+		"flow": {
+			"send": "送进视频工作流",
+			"done": "已在 110 视频剪辑项目建好项目并复制素材;Codex 启动提示词已复制到剪贴板。",
+			"openProject": "打开项目目录",
+			"failed": "送入失败"
+		}
+	},
+	"analyze": {
+		"title": "拉片分析",
+		"toProduce": "去成片",
+		"pick": "选择本地视频",
+		"fromUrl": "或 贴链接直接拆",
+		"urlPlaceholder": "粘贴抖音 / YouTube 视频链接",
+		"urlHint": "抖音:直接贴公开视频/分享链接(免 yt-dlp,读公开分享页的带水印播放地址)。YouTube 等:需安装下方的拆解组件 yt-dlp。",
+		"fetchAndAnalyze": "拉取并拆解",
+		"fetchProbing": "解析链接…",
+		"fetchDownloading": "下载中 {{pct}}%",
+		"ytdlpInstall": "安装拆解组件 yt-dlp(首次,~35MB)",
+		"ytdlpInstalling": "安装中 {{pct}}%",
+		"ytdlpInstallFailed": "拆解组件安装失败;可改用终端 brew install yt-dlp。",
+		"ytdlpMissing": "未安装拆解组件 yt-dlp,请先点「安装」或 brew install yt-dlp。",
+		"errorNoUrl": "请先粘贴视频链接。",
+		"errorFetchFailed": "拉取视频失败。",
+		"titleField": "标题(可选)",
+		"personaPlaceholder": "我的赛道/账号人设(可选,如:职场干货·反鸡汤·冷静解构)",
+		"personaHint": "填了 → 二创素材包(钩子/标题/口播/提示词)贴着你的账号定位和口吻生成;不填则做通用改写。",
+		"start": "开始拉片",
+		"keyHint": "拉片要「看」帧,需视觉模型密钥。点这里配置 Claude 或 Kimi —— 没有 Claude 就用 Kimi(DeepSeek 是纯文本,不能拉片)。",
+		"configKey": "配置密钥",
+		"ffmpegHint": "未检测到 ffmpeg(抽帧需要)。用 brew install ffmpeg 安装后刷新即可。",
+		"errorNoVideo": "请先选择视频。",
+		"errorFailed": "分析失败",
+		"frames": "已抽 {{count}} 帧",
+		"history": "历史报告",
+		"historyEmpty": "暂无",
+		"historySearch": "搜索标题…",
+		"historyNoMatch": "无匹配的报告",
+		"placeholder": "选一个视频点「开始拉片」,产出拉片报告 + 复现 SOP。",
+		"reportReadFailed": "读不到这份报告(report.md 可能已删/移动/损坏),请刷新或重新拉片。",
+		"transcribeToggle": "转写音轨拿逐字稿(更准,首次需下载 whisper 模型;无音轨可关)",
+		"transcribeDownloading": "下载转写模型(首次,约几十 MB)…",
+		"transcribing": "转写音轨… {{pct}}%",
+		"transcribeFailed": "音轨转写失败(无音轨/解码失败),已改为仅看画面分析。",
+		"phase": {
+			"idle": "空闲",
+			"probe": "读指纹",
+			"extract": "抽帧中",
+			"analyze": "Claude 分析中",
+			"write": "写报告",
+			"done": "完成",
+			"error": "失败"
+		}
+	},
+	"newRecording": {
+		"title": "返回录屏",
+		"description": "当前会话已保存。",
+		"cancel": "取消",
+		"confirm": "确认"
+	},
+	"loadingVideo": "正在加载视频...",
+	"loadingEditor": "正在加载编辑器...",
+	"errors": {
+		"noVideoLoaded": "未加载视频",
+		"videoNotReady": "视频未就绪",
+		"unableToDetermineSourcePath": "无法确定源视频路径",
+		"failedToSaveGif": "保存 GIF 失败",
+		"gifExportFailed": "GIF 导出失败",
+		"failedToSaveVideo": "保存视频失败",
+		"exportFailed": "导出失败",
+		"exportFailedWithError": "导出失败：{{error}}",
+		"exportBackgroundLoadFailed": "导出失败：无法加载背景图片（{{url}}）",
+		"failedToSaveExport": "保存导出文件失败",
+		"failedToSaveExportedVideo": "保存导出的视频失败",
+		"failedToRevealInFolder": "在文件夹中显示时出错：{{error}}",
+		"transcriptionFailed": "转写失败：{{error}}"
+	},
+	"aspectRatio": "画面比例",
+	"media": {
+		"tabMedia": "媒体",
+		"tabSmart": "智能",
+		"sectionAssets": "素材",
+		"insertImage": "插入图片",
+		"insertVideo": "插入视频",
+		"mainVideo": "主视频",
+		"webcam": "摄像头",
+		"overlays": "{{count}} 个叠加",
+		"dragHint": "把图片或视频拖进预览,即可作为画中画叠加。"
+	},
+	"export": {
+		"button": "导出",
+		"canceled": "导出已取消",
+		"exportedSuccessfully": "{{format}} 导出成功"
+	},
+	"project": {
+		"saveCanceled": "项目保存已取消",
+		"failedToSave": "保存项目失败",
+		"savedTo": "项目已保存至 {{path}}",
+		"failedToLoad": "加载项目失败",
+		"invalidFormat": "无效的项目文件格式",
+		"loadedFrom": "项目已从 {{path}} 加载"
+	},
+	"recording": {
+		"saveFailed": "录制保存失败。",
+		"saveFailedFileKept": "录制保存失败。原始录像文件已保留在录制目录中，可手动找回。",
+		"failedCameraAccess": "请求摄像头权限失败。",
+		"cameraBlocked": "摄像头权限已被阻止。请在系统设置中启用以使用摄像头。",
+		"systemAudioUnavailable": "系统音频不可用。将在无系统音频的情况下录制。",
+		"microphoneDenied": "麦克风权限被拒绝。录制将继续，但不包含音频。",
+		"cameraDenied": "摄像头权限被拒绝。录制将继续，但不包含摄像头画面。",
+		"cameraDisconnected": "摄像头已断开连接。",
+		"cameraNotFound": "未找到摄像头。",
+		"permissionDenied": "录屏权限被拒绝。请允许屏幕录制。",
+		"accessibilityAllowAndRetry": "允许 OpenScreen 使用辅助功能权限，然后再次按录制以开始倒计时。"
+	},
+	"emptyState": {
+		"title": "未打开任何项目",
+		"description": "录制一段新视频，或导入已有视频开始编辑。",
+		"recordVideoButton": "录制新视频",
+		"importVideoButton": "导入视频文件…",
+		"loadProjectButton": "加载项目…",
+		"supportedFormats": "支持的格式：MP4、MOV、WebM、MKV、AVI、M4V、WMV",
+		"dragDropHint": "或将 .openscreen 项目文件拖放到此处",
+		"dropOverlay": "将项目文件拖放至此以打开",
+		"dropErrors": {
+			"unsupportedFormatTitle": "不支持的格式",
+			"unsupportedFormatMessage": "此处只能拖放 .openscreen 项目文件。要导入视频，请使用\"导入视频文件...\"按钮。",
+			"couldNotOpenTitle": "无法打开文件",
+			"couldNotOpenMessage": "无法打开项目文件。它引用的视频可能已被移动或删除。"
+		}
+	},
+	"overlay": {
+		"invalidImageType": "无效的文件类型",
+		"imageFormatsOnly": "请上传 JPG、PNG、GIF 或 WebP 格式的图片。",
+		"failedImageUpload": "图片读取失败",
+		"failedVideoLoad": "视频读取失败",
+		"dropHint": "松开即把图片/视频插入为画中画叠加层"
+	},
+	"smartCut": {
+		"removed": "已删除 {{count}} 处停顿(可撤销)",
+		"fillersRemoved": "已删除 {{count}} 处语气词(可撤销)",
+		"reviewApplied": "已删除 {{count}} 段(可撤销)"
+	},
+	"subtitles": {
+		"generated": "已生成 {{count}} 条字幕(可撤销)"
+	},
+	"avatar": {
+		"config": "数字人设置",
+		"configured": "已配置",
+		"notConfigured": "未配置",
+		"apiKey": "API Key",
+		"apiKeyKeep": "API Key(已配置,留空保持)",
+		"avatarId": "形象 avatar_id(HeyGen 后台)",
+		"talkingPhotoId": "或 talking_photo_id(照片生成,二选一)",
+		"voiceId": "音色 voice_id",
+		"genericJsonHint": "通用适配器映射 JSON(submitUrl/headers/bodyTemplate/jobIdPath/statusUrl/statusPath/videoUrlPath)",
+		"genericJsonInvalid": "通用适配器映射 JSON 格式不对,请检查。",
+		"save": "保存配置",
+		"saved": "已保存",
+		"saveFailed": "保存失败",
+		"setupHint": "需先在对应平台后台注册你的数字人形象(实名/肖像授权)+ 拿 API key;HeyGen 一张照片即可生成形象。Inkast 只负责把口播稿送过去取回 MP4。",
+		"scriptPlaceholder": "粘贴口播稿(可用拉片产出③/文案;≥10 字)",
+		"titleField": "标题(可选)",
+		"errorScriptShort": "口播稿太短(至少 10 字)。",
+		"submitFailed": "提交失败",
+		"generate": "生成数字人视频",
+		"needConfig": "先在上方「数字人设置」填 API key 和形象/音色。",
+		"jobsTitle": "数字人任务",
+		"jobsEmpty": "还没有数字人任务。左侧填口播稿试试。",
+		"openOutput": "打开成片",
+		"delete": "删除",
+		"status": {
+			"queued": "排队中",
+			"submitting": "提交中",
+			"processing": "云端生成中",
+			"done": "完成",
+			"failed": "失败"
+		}
+	}
+}

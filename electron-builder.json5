@@ -1,0 +1,103 @@
+// @see - https://www.electron.build/configuration/configuration
+{
+  "$schema": "https://raw.githubusercontent.com/electron-userland/electron-builder/master/packages/app-builder-lib/scheme.json",
+  "appId": "com.sgd.inkast",
+  "asar": true,
+  // .node binaries can't be dlopen'd from inside an asar — must live unpacked.
+  "asarUnpack": [
+    "**/*.node"
+  ],
+  "productName": "Inkast",
+  "npmRebuild": true,
+  "buildDependenciesFromSource": true,
+  "compression": "normal",
+  "directories": {
+    "output": "release/${version}"
+  },
+  "files": [
+    "dist",
+    "dist-electron",
+    "!*.png",
+    "!preview*.png",
+    "!*.md",
+    "!README.md",
+    "!CONTRIBUTING.md",
+    "!LICENSE"
+  ],
+  // Asset layout contract: "wallpapers/" under resourcesPath must align with
+  // assetBaseDir in electron/preload.ts (packaged branch).
+  "extraResources": [
+    {
+      "from": "public/wallpapers",
+      "to": "wallpapers"
+    },
+    // web-demuxer.wasm 必须放 asar 外:Web Worker 里 fetch asar 内 file:// 的 .wasm 会读到
+    // asar 容器原始字节(magic word 错 → WASM 编译失败),worker 上下文不走 Electron 的 asar
+    // 拦截。放 resources/wasm/ 真实磁盘,renderer 经 getAssetPath 指向它(导出解封装依赖它)。
+    {
+      "from": "public/wasm",
+      "to": "wasm"
+    }
+  ],
+
+  "mac": {
+    "notarize": false,
+    // Inkast: do NOT let electron-builder sign. It auto-discovers the keychain cert
+    // and signs every file with `--timestamp` (needs network), which flakes. We sign
+    // authoritatively afterward with scripts/resign-local.sh (--force --deep, stable
+    // cert + entitlements). identity:null = skip electron-builder signing entirely.
+    "identity": null,
+    "hardenedRuntime": true,
+    "entitlements": "macos.entitlements",
+    "entitlementsInherit": "macos.entitlements",
+    "target": [
+      {
+        "target": "dmg",
+        "arch": ["x64", "arm64"]
+      }
+    ],
+    "icon": "icons/icons/mac/icon.icns",
+    "artifactName": "${productName}-Mac-${arch}-${version}-Installer.${ext}",
+    "extraResources": [
+      {
+        "from": "electron/native/bin",
+        "to": "electron/native/bin",
+        "filter": ["darwin-*/*"]
+      }
+    ],
+    "extendInfo": {
+      "NSAudioCaptureUsageDescription": "Inkast needs audio capture permission to record system audio.",
+      "NSMicrophoneUsageDescription": "Inkast needs microphone access to record voice audio.",
+      "NSCameraUsageDescription": "Inkast needs camera access to record webcam video.",
+      "NSScreenCaptureUsageDescription": "Inkast needs screen recording permission to detect and capture windows.",
+      "NSCameraUseContinuityCameraDeviceType": true
+    }
+  },
+  "linux": {
+    "target": [
+      "AppImage",
+      "deb",
+      "pacman"
+    ],
+    "icon": "icons/icons/png",
+    "artifactName": "${productName}-Linux-${version}.${ext}",
+    "category": "AudioVideo"
+  },
+  "win": {
+    "target": [
+      "nsis"
+    ],
+    "icon": "icons/icons/win/icon.ico",
+    "extraResources": [
+      {
+        "from": "electron/native/bin",
+        "to": "electron/native/bin",
+        "filter": ["win32-*/*"]
+      }
+    ]
+  },
+  "nsis": {
+    "oneClick": false,
+    "allowToChangeInstallationDirectory": true
+  }
+}

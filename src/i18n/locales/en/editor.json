@@ -1,0 +1,569 @@
+{
+	"workspace": {
+		"tabs": {
+			"cockpit": "Cockpit",
+			"analyze": "Analyze",
+			"record": "Record",
+			"produce": "Produce",
+			"library": "Library",
+			"publish": "Publish"
+		},
+		"badge": {
+			"running": "{{n}} task(s) running",
+			"awaiting": "{{n}} awaiting your confirmation"
+		},
+		"comingSoon": "Coming soon",
+		"cockpit": {
+			"title": "Content Cockpit",
+			"desc": "Pick topics and scripts from your daily source board, then jump straight to recording."
+		},
+		"analyze": {
+			"title": "Reference Analysis",
+			"desc": "Drop in a video or link to get a breakdown report and a reproduction SOP."
+		},
+		"produce": {
+			"title": "Produce",
+			"desc": "Hand a recording or script to the video engine and watch real progress through to a finished cut."
+		},
+		"library": {
+			"title": "Library",
+			"desc": "Your recordings, finished cuts, analysis reports and publish packages in one place."
+		}
+	},
+	"produce": {
+		"engine": {
+			"ready": "Engine ready",
+			"notReady": "Engine not found",
+			"notReadyHint": "Set INKAST_PIPELINE_ROOT or fix the video-pipeline path, then run the self-check.",
+			"smoke": "Self-check",
+			"smokeOk": "All dependencies OK"
+		},
+		"noKey": "Producing slides needs a Claude or DeepSeek key. Configure it to produce for real.",
+		"configKey": "Configure key",
+		"smokeBlocked": "Engine self-check failed — fix the dependencies shown above (.venv/deps/ffmpeg) before submitting.",
+		"submit": {
+			"title": "Script → Video",
+			"hint": "Paste a script/idea — AI splits it into multi-page slides (review/edit at the checkpoint) then renders the video. Edit screen recordings in the Record tab.",
+			"type_idea": "Idea",
+			"type_recording": "Recording",
+			"type_slides": "Slides",
+			"placeholder_idea": "Paste an idea or script…",
+			"placeholder_recording": "Absolute path to a .mov/.mp4/.m4v recording",
+			"placeholder_slides": "Paste a script / idea / source material to narrate as slides…",
+			"titleField": "Title (optional)",
+			"mode_simple": "Simple",
+			"mode_publish": "Publish-ready",
+			"provider": "Slides provider",
+			"providerAuto": "Auto (by configured keys)",
+			"button": "Produce",
+			"errorEmpty": "Enter something to produce.",
+			"errorNoKey": "Slide splitting needs an LLM key (Claude / Kimi / DeepSeek, etc.). Configure a key before producing."
+		},
+		"jobs": {
+			"title": "Jobs",
+			"refresh": "Refresh",
+			"empty": "No jobs yet. Submit something on the left.",
+			"artifacts": "Artifacts",
+			"rerun": "Re-run",
+			"cancel": "Cancel / Stop",
+			"delete": "Delete",
+			"elapsed": "Elapsed {{d}}",
+			"duration": "Took {{d}}",
+			"finishedAt": "finished {{t}}",
+			"estimate": "~{{d}} expected (avg of {{n}} past runs)",
+			"removed": "Deleted “{{title}}”",
+			"undoRemove": "Undo"
+		},
+		"status": {
+			"queued": "Queued",
+			"running": "Running",
+			"awaiting": "Awaiting confirm",
+			"awaitingPreview": "Awaiting preview",
+			"done": "Done",
+			"failed": "Failed",
+			"interrupted": "Interrupted"
+		},
+		"confirm": {
+			"title": "Review script before composing",
+			"heading": "Heading",
+			"narration": "Narration",
+			"confirm": "Confirm & compose",
+			"save": "Save edits",
+			"replan": "Re-plan"
+		},
+		"errors": {
+			"submitFailed": "Submit failed",
+			"actionFailed": "Action failed"
+		},
+		"mode": {
+			"slides": "Script → slides video",
+			"avatar": "Avatar voiceover"
+		},
+		"preview": {
+			"option": "Preview before rendering (Gate B)",
+			"optionHint": "After confirming the script, render a cover + 3s motion preview first; review before committing to the full render.",
+			"title": "Pre-render preview",
+			"hint": "A lightweight preview is ready (not the final film). Happy? Click \"Confirm & render\". Want changes? \"Back to edit\".",
+			"none": "No preview artifacts found (re-run or go back to edit).",
+			"confirm": "Confirm & render",
+			"replan": "Back to edit"
+		}
+	},
+	"search": {
+		"title": "Search everything",
+		"placeholder": "Search topics / takes / analyses / recordings / films / drafts… (⌘K)",
+		"hint": "Type to search across everything. Topics/takes jump to the cockpit; files open in Finder.",
+		"noResults": "No matches",
+		"close": "Close",
+		"foot": "{{n}} items indexed",
+		"kind": {
+			"topic": "Topic",
+			"opinion": "Take",
+			"analysis": "Analysis",
+			"recording": "Recording",
+			"film": "Film",
+			"publish": "Draft"
+		}
+	},
+	"cockpit": {
+		"tabs": {
+			"topics": "Today's topics",
+			"projects": "Projects",
+			"opinions": "Takes",
+			"sources": "Sources",
+			"hot": "Hot",
+			"peers": "Peers",
+			"follow": "Follow"
+		},
+		"refresh": "Refresh",
+		"errorTitle": "Can't read cockpit data",
+		"dir": "Data dir",
+		"dirHint": "Click \"Choose folder\" below to point at your KnowledgePlanet 每日驾驶舱 folder (or set INKAST_COCKPIT_DIR).",
+		"goRecord": "Record this",
+		"open": "Open",
+		"why": "Why",
+		"fit": "Fit",
+		"opinion": "Opinion",
+		"myOpinion": "My take",
+		"myOpinionPlaceholder": "Write your take/angle on this topic — it flows into the script when you go to Record or Produce.",
+		"resizeDetail": "Drag to resize the detail panel",
+		"genArticle": "Draft article",
+		"editArticle": "Edit article",
+		"genArticleHint": "Draft a WeChat article from the topic + your take; one-click to the publish board",
+		"article": {
+			"title": "Article draft",
+			"generate": "Draft article",
+			"regenerate": "Regenerate",
+			"hint": "Rewrites from the topic + your take; edit, then save or send to the board",
+			"placeholder": "Click \"Draft article\" to start with AI, or write here directly.",
+			"generated": "Drafted via {{provider}} — edit away",
+			"genFailed": "Generation failed (check LLM key / network)",
+			"saved": "Draft saved to the topic",
+			"saving": "Saving…",
+			"save": "Save draft",
+			"sent": "Sent to publish board (Drafts); topic marked \"pushed draft\"",
+			"sendFailed": "Failed to send to the board",
+			"send": "Send to board"
+		},
+		"bear": "Bear / risk",
+		"concept": "Concept",
+		"hooks": "Self-prompts",
+		"prefs": "Preferences",
+		"resetPrefs": "Reset to default",
+		"seed": "Seed",
+		"cycleStatus": "Click to cycle status",
+		"title": "Content cockpit",
+		"detailEmpty": "Select an item to see details",
+		"close": "Close",
+		"artifactFilm": "Film",
+		"goRecordHint": "Load this topic's script into the teleprompter and switch to recording",
+		"goProduce": "Produce",
+		"goProduceHint": "Send this topic to Produce as an idea (review before submitting; marks it Drafted when done)",
+		"todo": {
+			"title": "Project to-dos",
+			"placeholder": "Add a next step (Enter to add)",
+			"add": "Add",
+			"toggle": "Mark done / undone",
+			"remove": "Remove"
+		},
+		"project": {
+			"empty": "No active projects yet. Change a status, add a take or a to-do under \"Today's topics\" and it shows up here to track.",
+			"hasOpinion": "Take",
+			"hasDraft": "Article",
+			"artifactN": "{{n}} artifact(s)"
+		},
+		"opinions": {
+			"title": "My takes",
+			"search": "Search takes…",
+			"empty": "No takes yet. Write your take under a topic's \"My take\" and they gather here to search and reuse.",
+			"noMatch": "No matching takes",
+			"untitled": "(topic no longer on today's board)",
+			"copy": "Copy take",
+			"copied": "Copied",
+			"jump": "Go to topic"
+		},
+		"follow": {
+			"placeholder": "Paste a video link, or a YouTube/Douyin creator page",
+			"add": "Add",
+			"hint": "YouTube channels auto-list recent videos. Douyin creator pages track work-count changes and auto-add video cards when public posts are available.",
+			"empty": "Nothing saved yet. Paste a video link or creator page.",
+			"added": "Added {{n}}",
+			"addFailed": "Add failed",
+			"refresh": "Check updates",
+			"refreshing": "Checking",
+			"refreshDone": "Checked, added {{n}}",
+			"refreshFailed": "Check failed",
+			"awemeCount": "{{n}} works",
+			"newAwemeCount": "+{{n}} new",
+			"checkedAt": "Checked {{time}}",
+			"channelBadge": "{{platform}} creator",
+			"copy": "Copy link",
+			"openProfile": "Open profile",
+			"goAnalyze": "Analyze",
+			"remove": "Remove"
+		},
+		"creatorPool": {
+			"title": "AI Creator Seed Pool",
+			"subtitle": "Built-in recommended tracking pool · AI tools/tutorials/products/workflows only; drama·emotional·gaming hidden",
+			"count": "{{n}} creators",
+			"search": "Search name / Douyin ID / tag",
+			"hideExcluded": "Hide drama·emotional·gaming",
+			"filterAll": "All",
+			"tierCore": "Core",
+			"tierSecondary": "Secondary",
+			"tierReference": "Reference",
+			"tierCandidate": "To verify",
+			"copyId": "Copy Douyin ID",
+			"copied": "Copied",
+			"openSearch": "Open search",
+			"track": "Track",
+			"tracked": "Tracked",
+			"noId": "No stable Douyin ID",
+			"manualReview": "Needs manual review of recent content",
+			"empty": "No creators match the filter.",
+			"candidateHint": "These candidates lack a stable public Douyin ID and are not auto-imported; open search to verify manually before tracking.",
+			"verify_confirmed_public": "Confirmed",
+			"verify_third_party_public": "Third-party",
+			"verify_suspected": "Suspected",
+			"verify_needs_manual_verify": "To verify",
+			"trackFailed": "Failed to add tracking"
+		},
+		"comments": {
+			"fetch": "Fetch comments",
+			"refetch": "Re-fetch",
+			"fetching": "Fetching…",
+			"count": "{{n}} comments",
+			"added": "+{{n}} new",
+			"openPage": "Open video page",
+			"viewTop": "Top comments",
+			"hide": "Hide",
+			"topTitle": "Top comments",
+			"like": "{{n}} likes",
+			"reply": "{{n}} replies",
+			"lastFetched": "Fetched {{time}}",
+			"onlyDouyin": "Comment fetching currently supports single Douyin videos only.",
+			"status_ok": "Public comments fetched",
+			"status_no_public_data": "No parseable public comments",
+			"status_needs_login": "Login required (no credentials stored)",
+			"status_blocked": "Blocked by anti-crawl",
+			"status_needs_manual_refresh": "Manual refresh needed",
+			"status_error": "Fetch error",
+			"manualHint": "Inkast never fakes a successful fetch; open the video page manually, or let Computer Use assist with scrolling."
+		}
+	},
+	"keys": {
+		"title": "LLM keys",
+		"desc": "Claude / Kimi for analysis vision (no Claude? use Kimi); DeepSeek for produce copy. Stored encrypted on this Mac — never plaintext, never in git, persists across restarts.",
+		"configured": "Configured",
+		"replacePlaceholder": "Configured · enter a new value to replace",
+		"save": "Save",
+		"saveFailed": "Save failed",
+		"use": {
+			"anthropic": "Analysis + Produce",
+			"moonshot": "Analysis + Produce (use if no Claude)",
+			"deepseek": "Produce only (text, no analysis)",
+			"qwen": "Produce only (text)",
+			"glm": "Produce only (text)",
+			"openai": "Produce only (text)"
+		},
+		"noEncryption": "System keychain unavailable; can't store securely yet (macOS Keychain must be ready).",
+		"note": "Keys are encrypted via Electron safeStorage into userData/keys.json (decryptable only on this machine). Saving takes effect immediately for Produce/Analyze."
+	},
+	"settings": {
+		"title": "External paths",
+		"desc": "Set the produce engine / publishing folder / cockpit folder here — no need to hand-edit config files. After moving folders or switching machines, just re-pick them here.",
+		"engine": "Produce engine (video-pipeline)",
+		"publishing": "Publishing folder",
+		"cockpit": "Cockpit topics folder",
+		"choose": "Choose folder…",
+		"ok": "OK",
+		"missing": "Invalid or missing",
+		"envOverride": "Overridden by env var; changes here won't apply",
+		"pickFailed": "Couldn't apply setting",
+		"managed": "App-owned copy",
+		"adopt": "Adopt as app's own copy",
+		"adopting": "Adopting… (copying ~2.4GB)",
+		"adoptFailed": "Adoption failed",
+		"adoptHint": "Adopt = freeze-copy the current engine into an app-owned location; after that, editing/moving/deleting your dev folder won't break Produce. To update the engine, pick a new folder first, then adopt again.",
+		"note": "Defaults point at this machine's knowledge base. Picking a folder writes a userData config and applies immediately (no restart needed for the engine).",
+		"backup": {
+			"title": "Export backup",
+			"desc": "Export the app's topic statuses / project to-dos / takes / article drafts / produce job history / follows / config to a folder you pick. Excludes media files (recordings, films, analysis reports) and keys.",
+			"export": "Export backup…",
+			"done": "Exported {{n}} file(s); opened in Finder",
+			"failed": "Export failed"
+		}
+	},
+	"publish": {
+		"title": "Publish board",
+		"total": "{{n}} total",
+		"uncategorizedWarn": "{{n}} uncategorized (update the mapping table)",
+		"refresh": "Refresh",
+		"errorTitle": "Can't read publishing dir",
+		"dirHint": "Click \"Choose folder\" below to point at your Operations/Publishing folder (or set INKAST_PUBLISHING_DIR).",
+		"stageEmpty": "Nothing in this stage",
+		"stale": "Stale",
+		"staleDays": "{{n}}d idle",
+		"staleTotal": "{{n}} stale",
+		"open": "Open in Finder",
+		"previewTip": "Click to preview",
+		"previewBinary": "Not a text file; can't preview. Use the Finder button top-right.",
+		"previewFailed": "Couldn't read the content (deleted/moved?).",
+		"batch": {
+			"selected": "{{n}} selected",
+			"moveTo": "Move to:",
+			"delete": "Delete → Trash",
+			"clear": "Clear"
+		},
+		"overview": {
+			"weekPublished": "{{n}} published this week",
+			"oldest": "oldest {{n}}d idle"
+		},
+		"undo": {
+			"moved": "Moved {{n}} file(s)",
+			"undo": "Undo",
+			"trashed": "Moved to Trash",
+			"openTrash": "Open Trash"
+		},
+		"actions": {
+			"edit": "Edit",
+			"rename": "Rename",
+			"move": "Move",
+			"delete": "Delete",
+			"notEditable": "Not a text file",
+			"editTitle": "Edit content",
+			"renameTitle": "Rename file",
+			"moveTitle": "Move to stage",
+			"deleteTitle": "Delete draft",
+			"loading": "Loading…",
+			"failed": "Action failed",
+			"renameHint": "New file name (keep the extension):",
+			"moveHint": "Move all files of this draft to:",
+			"deleteConfirm": "Delete this draft and its {{n}} file(s)?",
+			"deleteToTrash": "Moved to Trash — recoverable.",
+			"cancel": "Cancel",
+			"save": "Save",
+			"confirm": "Confirm"
+		},
+		"stages": {
+			"candidate": "Candidate",
+			"draft": "Draft",
+			"ready": "Ready",
+			"published": "Published",
+			"uncategorized": "Uncategorized"
+		}
+	},
+	"library": {
+		"title": "Library",
+		"refresh": "Refresh",
+		"empty": "Nothing here yet",
+		"errorTitle": "Couldn't read the library",
+		"toProduce": "To Produce",
+		"previewTip": "Click to preview",
+		"openInFinder": "Open in Finder",
+		"previewLoading": "Loading preview…",
+		"previewFailed": "Couldn't read the content (deleted/moved?).",
+		"sections": {
+			"recordings": "Recordings",
+			"films": "Finished cuts",
+			"analyses": "Analysis reports"
+		},
+		"flow": {
+			"send": "Send to video workflow",
+			"done": "Project created in 110 video workspace with material copied; the Codex startup prompt is on your clipboard.",
+			"openProject": "Open project folder",
+			"failed": "Send failed"
+		}
+	},
+	"analyze": {
+		"title": "Reference analysis",
+		"toProduce": "Send to Produce",
+		"pick": "Choose local video",
+		"fromUrl": "Or deconstruct from a link",
+		"urlPlaceholder": "Paste a Douyin / YouTube video link",
+		"urlHint": "Douyin: paste a public video/share link (no yt-dlp; reads the public share page's watermarked play URL). YouTube etc.: install the yt-dlp component below.",
+		"fetchAndAnalyze": "Fetch & deconstruct",
+		"fetchProbing": "Parsing link…",
+		"fetchDownloading": "Downloading {{pct}}%",
+		"ytdlpInstall": "Install yt-dlp component (first time, ~35MB)",
+		"ytdlpInstalling": "Installing {{pct}}%",
+		"ytdlpInstallFailed": "Component install failed; try brew install yt-dlp in a terminal.",
+		"ytdlpMissing": "yt-dlp component not installed — click Install or brew install yt-dlp.",
+		"errorNoUrl": "Paste a video link first.",
+		"errorFetchFailed": "Failed to fetch the video.",
+		"titleField": "Title (optional)",
+		"personaPlaceholder": "My niche / account persona (optional, e.g. career tips · anti-cliché · calm deconstruction)",
+		"personaHint": "Filled in → the remix kit (hooks/titles/scripts/prompts) is tailored to your account's positioning and tone; left blank → generic rewrite.",
+		"start": "Analyze",
+		"keyHint": "Analysis needs a vision model to \"see\" frames. Click to configure Claude or Kimi — no Claude? use Kimi (DeepSeek is text-only, can't analyze).",
+		"configKey": "Configure key",
+		"ffmpegHint": "ffmpeg not found (needed for frame extraction). Install via brew install ffmpeg, then refresh.",
+		"errorNoVideo": "Choose a video first.",
+		"errorFailed": "Analysis failed",
+		"frames": "{{count}} frames extracted",
+		"history": "Past analyses",
+		"historyEmpty": "None yet",
+		"historySearch": "Search titles…",
+		"historyNoMatch": "No matching reports",
+		"placeholder": "Choose a video and click Analyze to get a teardown report + reproduction SOP.",
+		"reportReadFailed": "Couldn't read this report (report.md may be deleted/moved/corrupted). Refresh or re-run analysis.",
+		"transcribeToggle": "Transcribe audio for a transcript (more accurate; first run downloads the whisper model; turn off if no audio)",
+		"transcribeDownloading": "Downloading transcription model (first run, tens of MB)…",
+		"transcribing": "Transcribing audio… {{pct}}%",
+		"transcribeFailed": "Audio transcription failed (no audio / decode error); analyzing frames only.",
+		"phase": {
+			"idle": "Idle",
+			"probe": "Probing",
+			"extract": "Extracting frames",
+			"analyze": "Analyzing with Claude",
+			"write": "Writing report",
+			"done": "Done",
+			"error": "Failed"
+		}
+	},
+	"newRecording": {
+		"title": "Return to Recorder",
+		"description": "Your current session has been saved.",
+		"cancel": "Cancel",
+		"confirm": "Confirm"
+	},
+	"loadingVideo": "Loading video...",
+	"loadingEditor": "Loading editor...",
+	"errors": {
+		"noVideoLoaded": "No video loaded",
+		"videoNotReady": "Video not ready",
+		"unableToDetermineSourcePath": "Unable to determine source video path",
+		"failedToSaveGif": "Failed to save GIF",
+		"gifExportFailed": "GIF export failed",
+		"failedToSaveVideo": "Failed to save video",
+		"exportFailed": "Export failed",
+		"exportFailedWithError": "Export failed: {{error}}",
+		"exportBackgroundLoadFailed": "Export failed: could not load background image ({{url}})",
+		"failedToSaveExport": "Failed to save export",
+		"failedToSaveExportedVideo": "Failed to save exported video",
+		"failedToRevealInFolder": "Error revealing in folder: {{error}}",
+		"transcriptionFailed": "Transcription failed: {{error}}"
+	},
+	"aspectRatio": "Aspect ratio",
+	"media": {
+		"tabMedia": "Media",
+		"tabSmart": "Smart",
+		"sectionAssets": "Assets",
+		"insertImage": "Insert image",
+		"insertVideo": "Insert video",
+		"mainVideo": "Main video",
+		"webcam": "Webcam",
+		"overlays": "{{count}} overlays",
+		"dragHint": "Drop an image or video onto the preview to add it as a picture-in-picture overlay."
+	},
+	"export": {
+		"button": "Export",
+		"canceled": "Export canceled",
+		"exportedSuccessfully": "{{format}} exported successfully"
+	},
+	"project": {
+		"saveCanceled": "Project save canceled",
+		"failedToSave": "Failed to save project",
+		"savedTo": "Project saved to {{path}}",
+		"failedToLoad": "Failed to load project",
+		"invalidFormat": "Invalid project file format",
+		"loadedFrom": "Project loaded from {{path}}"
+	},
+	"recording": {
+		"saveFailed": "Failed to save the recording.",
+		"saveFailedFileKept": "Failed to save the recording. The raw video file has been kept in the recordings folder so you can recover it.",
+		"failedCameraAccess": "Failed to request camera access.",
+		"cameraBlocked": "Camera access is blocked. Enable it in system settings to use the webcam.",
+		"systemAudioUnavailable": "System audio not available. Recording without system audio.",
+		"microphoneDenied": "Microphone access denied. Recording will continue without audio.",
+		"cameraDenied": "Camera access denied. Recording will continue without webcam.",
+		"cameraDisconnected": "Webcam disconnected.",
+		"cameraNotFound": "Camera not found.",
+		"permissionDenied": "Recording permission denied. Please allow screen recording.",
+		"accessibilityAllowAndRetry": "Allow Accessibility access for OpenScreen, then press record again to start the countdown."
+	},
+	"emptyState": {
+		"title": "No project open",
+		"description": "Record a new video, or import an existing one to start editing.",
+		"recordVideoButton": "Record New Video",
+		"importVideoButton": "Import Video File…",
+		"loadProjectButton": "Load Project…",
+		"supportedFormats": "Supported formats: MP4, MOV, WebM, MKV, AVI, M4V, WMV",
+		"dragDropHint": "or drag & drop a .openscreen project file here",
+		"dropOverlay": "Drop project file to open",
+		"dropErrors": {
+			"unsupportedFormatTitle": "Unsupported Format",
+			"unsupportedFormatMessage": "Only .openscreen project files can be dropped here. To import a video file, use the \"Import Video File…\" button on this screen.",
+			"couldNotOpenTitle": "Could Not Open File",
+			"couldNotOpenMessage": "The project file could not be opened. The video it references may have been moved or deleted."
+		}
+	},
+	"overlay": {
+		"invalidImageType": "Invalid file type",
+		"imageFormatsOnly": "Please upload a JPG, PNG, GIF, or WebP image.",
+		"failedImageUpload": "Failed to read image",
+		"failedVideoLoad": "Failed to load video",
+		"dropHint": "Drop to insert an image/video as a picture-in-picture overlay"
+	},
+	"smartCut": {
+		"removed": "Removed {{count}} pause(s) — undoable",
+		"fillersRemoved": "Removed {{count}} filler word(s) — undoable",
+		"reviewApplied": "Removed {{count}} segment(s) — undoable"
+	},
+	"subtitles": {
+		"generated": "Generated {{count}} subtitle(s) — undoable"
+	},
+	"avatar": {
+		"config": "Avatar settings",
+		"configured": "Configured",
+		"notConfigured": "Not configured",
+		"apiKey": "API Key",
+		"apiKeyKeep": "API Key (set; leave blank to keep)",
+		"avatarId": "avatar_id (HeyGen console)",
+		"talkingPhotoId": "or talking_photo_id (from a photo)",
+		"voiceId": "voice_id",
+		"genericJsonHint": "Generic adapter mapping JSON (submitUrl/headers/bodyTemplate/jobIdPath/statusUrl/statusPath/videoUrlPath)",
+		"genericJsonInvalid": "Generic adapter mapping JSON is invalid — please check.",
+		"save": "Save config",
+		"saved": "Saved",
+		"saveFailed": "Save failed",
+		"setupHint": "First register your avatar in the providers console (consent/likeness) and get an API key; HeyGen can build an avatar from a single photo. Inkast only sends the script and fetches the MP4.",
+		"scriptPlaceholder": "Paste the voiceover script (≥10 chars; can reuse analysis output ③)",
+		"titleField": "Title (optional)",
+		"errorScriptShort": "Script is too short (min 10 chars).",
+		"submitFailed": "Submit failed",
+		"generate": "Generate avatar video",
+		"needConfig": "Fill API key + avatar/voice in Avatar settings above first.",
+		"jobsTitle": "Avatar jobs",
+		"jobsEmpty": "No avatar jobs yet. Paste a script on the left.",
+		"openOutput": "Open video",
+		"delete": "Delete",
+		"status": {
+			"queued": "Queued",
+			"submitting": "Submitting",
+			"processing": "Generating",
+			"done": "Done",
+			"failed": "Failed"
+		}
+	}
+}

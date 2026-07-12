@@ -1,0 +1,118 @@
+{
+	"buttons": {
+		"addZoom": "放大 (Z)",
+		"suggestZooms": "根据鼠标自动加放大",
+		"suggestZoomsLabel": "自动",
+		"addTrim": "剪掉 (T)",
+		"addAnnotation": "标注 (A)",
+		"addSpeed": "变速 (S)",
+		"addBlur": "打码 (B)",
+		"toggleWaveform": "音频波形",
+		"insertImage": "插入图片到画中画叠加层(也可直接把图片拖进预览)",
+		"insertImageLabel": "插入图片",
+		"insertVideo": "插入视频片段到画中画叠加层(也可直接把视频拖进预览)",
+		"insertVideoLabel": "插入视频"
+	},
+	"hints": {
+		"pressZoom": "按 Z 加放大",
+		"pressTrim": "按 T 剪掉",
+		"pressAnnotation": "按 A 标注",
+		"pressSpeed": "按 S 变速",
+		"pressBlur": "按 B 打码",
+		"overlayClip": "用上方「插入视频」把视频片段放到这条叠加轨"
+	},
+	"labels": {
+		"pan": "平移",
+		"zoom": "放大",
+		"trim": "剪掉",
+		"speed": "变速",
+		"zoomItem": "放大 {{index}}",
+		"trimItem": "剪掉 {{index}}",
+		"speedItem": "变速 {{index}}",
+		"annotationItem": "标注",
+		"imageItem": "图片",
+		"emptyText": "空文本",
+		"blurItem": "打码 {{index}}",
+		"overlayClipItem": "视频 {{index}}"
+	},
+	"trackLabels": {
+		"zoom": "放大",
+		"trim": "剪掉",
+		"annotation": "标注",
+		"blur": "打码",
+		"speed": "变速",
+		"overlay": "叠加",
+		"audio": "音频"
+	},
+	"emptyState": {
+		"noVideo": "未加载视频",
+		"dragAndDrop": "拖放视频以开始编辑"
+	},
+	"errors": {
+		"cannotPlaceZoom": "无法在此处放置缩放",
+		"zoomExistsAtLocation": "此位置已存在缩放或没有足够的空间。",
+		"zoomSuggestionUnavailable": "缩放建议处理器不可用",
+		"noCursorTelemetry": "无可用的光标遥测数据",
+		"noCursorTelemetryDescription": "请先录制一段屏幕录像以生成基于光标的建议。",
+		"noUsableTelemetry": "无可用的光标遥测数据",
+		"noUsableTelemetryDescription": "录制内容没有包含足够的光标移动数据。",
+		"noDwellMoments": "未找到明确的光标停留时刻",
+		"noDwellMomentsDescription": "请尝试在重要操作上进行较慢光标停留的录制。",
+		"noAutoZoomSlots": "无可用的自动缩放位置",
+		"noAutoZoomSlotsDescription": "检测到的停留点与现有缩放区域重叠。",
+		"cannotPlaceTrim": "无法在此处放置剪辑",
+		"trimExistsAtLocation": "此位置已存在剪辑或没有足够的空间。",
+		"cannotPlaceSpeed": "无法在此处放置速度",
+		"speedExistsAtLocation": "此位置已存在速度区域或没有足够的空间。"
+	},
+	"success": {
+		"addedZoomSuggestions": "已添加 {{count}} 个基于光标的缩放建议",
+		"addedZoomSuggestionsPlural": "已添加 {{count}} 个基于光标的缩放建议"
+	},
+	"smartCut": {
+		"button": "智能粗剪",
+		"tooltip": "智能粗剪:删长停顿、删语气词",
+		"localTag": "本地识别",
+		"panelHint": "录完已自动标出停顿;点「识别废话」再转写出语气词。审一眼即可删。",
+		"close": "关闭",
+		"statFillers": "废话",
+		"statPauses": "停顿",
+		"statSavable": "可省",
+		"pauseSection": "停顿",
+		"analyzing": "正在分析音频…",
+		"noAudio": "无音频或暂时无法分析",
+		"pausesFound": "检测到 {{count}} 处长停顿",
+		"canSave": "可省 {{seconds}} 秒",
+		"removeAll": "一键删除停顿",
+		"none": "未检测到明显的长停顿",
+		"fillerSection": "废话 / 语气词",
+		"transcribe": "识别废话(本地转写)",
+		"transcribeHint": "首次需下载语音模型,转写需几十秒;识别不完美,可在时间线手工调整。",
+		"preparing": "准备音频…",
+		"transcribing": "转写中…",
+		"fillersFound": "检测到 {{count}} 处语气词",
+		"removeFillers": "一键删除语气词",
+		"noFillers": "未发现明显的语气词",
+		"reviewFillers": "逐条复核…",
+		"transcribeRetry": "转写失败,点此重试",
+		"hint": "删除都会生成可撤销的剪辑(⌘Z),时长缩短、时间线自动吸合。"
+	},
+	"review": {
+		"title": "逐条复核",
+		"hint": "点词切换删/留:红色删除线 = 将删,黄色 = 识别到的语气词。应用后生成可撤销的剪辑。",
+		"empty": "没有可复核的转写文本。",
+		"willCut": "将删除 {{count}} 段 · 共 {{seconds}} 秒",
+		"selectFillers": "全选语气词",
+		"clear": "清空",
+		"cancel": "取消",
+		"apply": "应用删除"
+	},
+	"subtitles": {
+		"section": "字幕",
+		"generate": "生成字幕",
+		"regenerate": "重新生成字幕",
+		"show": "显示字幕({{count}} 条)",
+		"hide": "隐藏字幕({{count}} 条)",
+		"needTranscribe": "先「识别废话」完成转写,再生成字幕"
+	}
+}

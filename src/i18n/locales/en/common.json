@@ -1,0 +1,62 @@
+{
+	"actions": {
+		"cancel": "Cancel",
+		"save": "Save",
+		"delete": "Delete",
+		"close": "Close",
+		"share": "Share",
+		"done": "Done",
+		"open": "Open",
+		"upload": "Upload",
+		"export": "Export",
+		"showInFolder": "Show in Folder",
+		"file": "File",
+		"edit": "Edit",
+		"view": "View",
+		"window": "Window",
+		"quit": "Quit",
+		"stopRecording": "Stop Recording",
+		"undo": "Undo",
+		"redo": "Redo",
+		"cut": "Cut",
+		"copy": "Copy",
+		"paste": "Paste",
+		"selectAll": "Select All",
+		"minimize": "Minimize",
+		"reload": "Reload",
+		"forceReload": "Force Reload",
+		"toggleDevTools": "Toggle Developer Tools",
+		"actualSize": "Actual Size",
+		"zoomIn": "Zoom In",
+		"zoomOut": "Zoom Out",
+		"toggleFullScreen": "Toggle Full Screen",
+		"recordingStatus": "Recording: {{source}}",
+		"about": "About OpenScreen",
+		"services": "Services",
+		"hide": "Hide OpenScreen",
+		"hideOthers": "Hide Others",
+		"unhide": "Show All"
+	},
+	"playback": {
+		"play": "Play",
+		"pause": "Pause",
+		"fullscreen": "Fullscreen",
+		"exitFullscreen": "Exit Fullscreen"
+	},
+	"locale": {
+		"name": "English",
+		"short": "EN"
+	},
+	"notify": {
+		"produceDoneTitle": "Render done",
+		"produceDoneBody": "“{{title}}” is ready — open to view the output.",
+		"produceAwaitTitle": "Render needs confirmation",
+		"produceAwaitBody": "“{{title}}” slides are drafted — review the script and confirm to synthesize.",
+		"produceFailedTitle": "Render failed",
+		"produceFailedBody": "“{{title}}” didn't finish — open to see why.",
+		"analyzeDoneTitle": "Analysis done",
+		"analyzeDoneBody": "“{{title}}” report is ready.",
+		"analyzeFailedTitle": "Analysis failed",
+		"analyzeFailedBody": "“{{title}}” didn't finish — open to see why."
+	}
+}

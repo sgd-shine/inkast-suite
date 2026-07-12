@@ -1,0 +1,2 @@
+# 推送前跑全量测试(346+),挡住会让 CI 变红的回归。比 pre-commit 慢,故只在 push 时跑。
+npm test

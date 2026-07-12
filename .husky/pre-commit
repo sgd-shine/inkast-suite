@@ -1,0 +1,3 @@
+npx lint-staged
+# 类型检查在每次提交把关(测试较慢,放 pre-push)。绿了才让提交,杜绝"靠手动记得跑 tsc"。
+npm run -s typecheck
